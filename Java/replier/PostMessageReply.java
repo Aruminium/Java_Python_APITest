@@ -1,13 +1,12 @@
 package com.example.linebot.replier;
 
-import com.example.linebot.value.PostType;
 import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.TextMessage;
 
-public class PostReply implements Replier{
+public class PostMessageReply implements Replier{
     private final String text;
 
-    public PostReply(final String text) {
+    public PostMessageReply(final String text) {
         this.text = text;
     }
 
