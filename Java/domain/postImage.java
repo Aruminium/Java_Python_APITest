@@ -2,33 +2,37 @@ package com.example.linebot.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import com.linecorp.bot.client.LineBlobClient;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
-public class postMessage implements IPost{
+public class postImage implements IPost{
+
     private final HttpHeaders headers = new HttpHeaders();
     /**
      * URLは http://localhost:5000(ホスト) + /test(パス) のホスト+パスで構成されている
-     * パスの部分を@app.route("/message", methods=['POST'])の"/message"と同じにする
+     * パスの部分を@app.route("/image", methods=['POST'])の"/image"と同じにする
      */
-    private final static String URL = "http://localhost:5000/message";
+    private final static String URL = "http://localhost:5000/image";
+
     /**
      * KEY 連想配列のkey
      * KEY = "text" とした場合
-     * pythonでのres = req["message"]の処理を
+     * pythonでのres = req["image"]の処理を
      * res = req["text"]にする
      */
-    private final static String KEY = "message";
+    private final static String KEY = "image";
     private final Map<String, String> map = new HashMap<>();
 
-    public postMessage(final String message) {
+    public postImage(final String base64) {
         headers.setContentType(MediaType.APPLICATION_JSON);
-        map.put(KEY, message);
+        map.put(KEY, base64);
     }
 
     @Override
@@ -41,4 +45,6 @@ public class postMessage implements IPost{
                 URL, request, String.class);
         return res;
     }
+
+
 }

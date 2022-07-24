@@ -1,18 +1,21 @@
 from flask import Flask, jsonify, request
+import cv2
+import base64
+import numpy as np
 import ast
 
 # おまじない
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 
-# http://localhost:5000/test にPOSTリクエストが来たら実行→レスポンスを返す
-@app.route("/test", methods=['POST'])
+# http://localhost:5000/message にPOSTリクエストが来たら実行→レスポンスを返す
+@app.route("/message", methods=['POST'])
 def res_EstimationResult():
     # デシリアライズ(ただの文字列になる)
     req = request.get_json()
 
     # <class 'dict'>であることを確認する
-    print(type("aa"))
+    print(type(req))
 
     # <class 'str'>の場合 以下で str -> dict へ変換する
     # req = ast.literal_eval(req)
@@ -20,12 +23,44 @@ def res_EstimationResult():
     # {'key': 'value'}を表示
     print(req)
 
-    # res = res[key] 複数のデータを返す場合jsonifyを使うためこの処理は不要
+    # res = res[key]
     res = req["message"]
 
-    # ここでAIで推定させる関数を呼び出して上げる. "これは犬です"の様な
-    # res = AIに推定させる関数(res)
+    # ここで自然言語処理させる
+    # res = 自然言語処理をさせる関数(res)
 
+    return res
+
+# http://localhost:5000/image にPOSTリクエストが来たら実行→レスポンスを返す
+@app.route("/image", methods=['POST'])
+def res_ImgProcessingResult():
+    # デシリアライズ(ただの文字列になる)
+    req = request.get_json()
+
+    # <class 'dict'>であることを確認する
+    print(type(req))
+
+    # <class 'str'>の場合 以下で str -> dict へ変換する
+    # req = ast.literal_eval(req)
+
+    # {'key': 'value'}を表示
+    print(req)
+
+    # res = res[key]
+    binary = req["image"]
+
+    #base64 から 画像へデコードする
+    filename = "decode.jpg"
+    img_binary = base64.b64decode(binary)
+    jpg = np.frombuffer(img_binary, dtype=np.uint8)
+    # raw image <- jpg
+    img = cv2.imdecode(jpg, cv2.IMREAD_COLOR)
+    # 画像出力
+    cv2.imwrite(filename, img)
+
+    # ここで画像関係のAIの関数を呼び出す. "これは犬です"と推定させる様な
+    # res = AIに推定させる関数(filename)
+    res = "犬"
     return res
 
 # 実行 http://localhost:5000
