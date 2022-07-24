@@ -1,0 +1,3 @@
+flask
+opencv-python
+# 1行につき1ライブラリ記述する
