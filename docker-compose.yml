@@ -1,0 +1,26 @@
+version: '3'
+services:
+ flask:
+  build:
+   context: .
+   dockerfile: ./Python/Dockerfile
+  ports:
+   - 5000:5000
+  container_name: flask
+  volumes:
+   - ./Python:/Python
+  tty: true
+  restart: always
+
+ java:
+  build:
+   context: .
+   dockerfile: Java/Dockerfile
+  container_name: java
+  tty: true
+  working_dir: /Java
+  volumes:
+   - ./Java:/Java
+  ports:
+   - 8080:8080
+  command: ./mvnw spring-boot:run

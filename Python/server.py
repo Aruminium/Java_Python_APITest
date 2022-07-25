@@ -66,7 +66,7 @@ def res_ImgProcessingResult():
 # 実行 http://localhost:5000
 if __name__ == "__main__":
     # port番号5000番でデバッグモードON(ファイル変更時に自動でリロードしてくれる)
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=True, host="0.0.0.0")
     # デフォルトはhttp://127.0.0.1 (自分のみアクセスできる)で
     # これを0.0.0.0(誰でもアクセス)にするときはapp.run(port=5000, debug=True, host='0.0.0.0')
     # 例えばEC2にAPIサーバを置く場合は試してみるといいかも
