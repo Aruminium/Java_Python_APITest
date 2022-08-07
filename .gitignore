@@ -8,26 +8,26 @@ spring-app/target
 !**/src/test/**/target/
 
 ### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+spring-app/.apt_generated
+spring-app/.classpath
+spring-app/.factorypath
+spring-app/.project
+spring-app/.settings
+spring-app/.springBeans
+spring-app/.sts4-cache
 
 ### IntelliJ IDEA ###
 .idea
-*.iws
-*.iml
-*.ipr
+spring-app/.iws
+spring-app/.iml
+spring-app/.ipr
 
 ### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+spring-app/nbproject/private/
+spring-app/nbbuild/
+spring-app/dist/
+spring-app/nbdist/
+/spring-app/.nb-gradle/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
