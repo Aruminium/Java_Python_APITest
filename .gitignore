@@ -1,2 +1,13 @@
 .DS_Store
 .idea
+*.env
+
+spring-app/src/main/resources/application.properties
+spring-app/target
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+
+mysql/data
+mysql/log

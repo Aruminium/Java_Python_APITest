@@ -1,0 +1,6 @@
+spring-app/Dockerfile
+Python/Dockerfile
+mysql/Dockerfile
+.DS_Store
+spring-app/target
+.git
