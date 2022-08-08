@@ -28,6 +28,7 @@ def res_EstimationResult():
 
     # ここで自然言語処理させる
     # res = 自然言語処理をさせる関数(res)
+    res = "デフォルト"
 
     return res
 
@@ -60,7 +61,7 @@ def res_ImgProcessingResult():
 
     # ここで画像関係のAIの関数を呼び出す. "これは犬です"と推定させる様な
     # res = AIに推定させる関数(filename)
-    res = "犬"
+    res = "デフォルト"
     return res
 
 # 実行 http://localhost:5000

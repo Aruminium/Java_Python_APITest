@@ -4,7 +4,7 @@ import java.util.EnumSet;
 import java.util.regex.Pattern;
 
 public enum Intent {
-    POST_MESSAGE("^post .+"),
+    POST_MESSAGE("^post$"),
     UNKNOWN(".+");
 
     private final String regexp;

@@ -4,7 +4,7 @@ import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.TextMessage;
 
 public class Error implements Replier{
-    private final static String ERROR = "エラー";
+    private final static String ERROR = "「post」と入力するとNLPさせることができます";
 
     @Override
     public Message reply() {

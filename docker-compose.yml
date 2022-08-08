@@ -23,6 +23,7 @@ services:
     container_name: spring
     env_file:
       - ./Mysql/db.env
+      - ./spring-app/src/main/resources/linebot.env
     tty: true
     volumes:
       - ./spring-app/:/app/
