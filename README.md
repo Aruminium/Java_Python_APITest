@@ -71,6 +71,15 @@ TZ="Asia/Tokyo"
 
 8. docker-compose up -d でコンテナを立ち上げよう
 
+## その前に
+Docker Desktopがinstallされていない場合
+
+windowsは[【Docker Desktop】Windowsにインストール（WSL2）](https://chigusa-web.com/blog/windows%E3%81%ABdocker%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%97%E3%81%A6python%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89/)
+
+macは[【Docker Desktop】Macにインストール【Monterey/M1】](https://chigusa-web.com/blog/docker-desktop-mac/)
+
+を参考にinstallしてください
+
 ```shell
 $ docker compose up -d
 ```
@@ -80,7 +89,10 @@ $ docker compose up -d
 
 <img width="730" alt="スクリーンショット 2022-08-08 17 48 14" src="https://user-images.githubusercontent.com/73931800/183378427-5f203bf8-cf88-4f96-9fce-56e6b799f8c7.png">
 
-spring-app コンテナの起動には時間がかかります。spring-appをクリックし、以下の状態になっていることを確認する。
+spring コンテナの起動には時間がかかります。springをクリックし、以下の状態になっていることを確認する。
+
+<img width="699" alt="スクリーンショット 2022-08-08 21 10 07" src="https://user-images.githubusercontent.com/73931800/183414741-d50e5050-aff6-4e17-89fa-35a865f92a5f.png">
+
 
 9. ngrok でHttps化する
 ngrokというアプリケーションを用いて、localhost:8080をssl化させます
