@@ -1,7 +1,6 @@
 .DS_Store
 *.env
 
-spring-app/src/main/resources/application.properties
 spring-app/target
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
