@@ -1,4 +1,4 @@
-# Java と Python Linebot スターターキット 
+# Docker による Java と Python Linebot スターターキット 
 
 目的: Javaをバックエンド、PythonをAPIサーバーとしてLinebotをすぐに構築できるようにする
 
