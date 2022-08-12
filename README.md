@@ -1,8 +1,8 @@
 # Docker による Java と Python Linebot スターターキット 
 
-目的: Javaをバックエンド、PythonをAPIサーバーとしてLinebotをすぐに構築できるようにする
+目的: Javaをバックエンド、PythonをAPIサーバーとしてLinebotを構築できるようにする
 
-使い方(後日更新)
+使い方
 
 1. [Line Developer](https://developers.line.biz/ja/)にアクセス
 2. コンソール > Lineアカウントでログイン
