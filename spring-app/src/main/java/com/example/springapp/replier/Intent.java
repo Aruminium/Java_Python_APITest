@@ -4,7 +4,8 @@ import java.util.EnumSet;
 import java.util.regex.Pattern;
 
 public enum Intent {
-    POST_MESSAGE("^post$"),
+    SIRITORI("^しりとり$"),
+    NLP("^NLP$"),
     UNKNOWN(".+");
 
     private final String regexp;

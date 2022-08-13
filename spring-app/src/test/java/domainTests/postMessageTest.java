@@ -16,7 +16,7 @@ public class postMessageTest {
     void PostTest() throws JsonProcessingException {
         final String message = "ネコ";
         final postMessage postMessage = new postMessage(message);
-        final String res = postMessage.Post();
+        final String res = postMessage.Post().getBody();
         System.out.println(res);
         assertEquals(message, res, "message = res の検証");
     }

@@ -1,5 +1,6 @@
 .DS_Store
 *.env
+*/__pycache__
 
 spring-app/target
 !.mvn/wrapper/maven-wrapper.jar

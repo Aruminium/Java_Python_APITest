@@ -106,7 +106,7 @@ $ choco install ngrok
 以下のコマンドを実行しhttps化をさせます。
 
 ```shell
-$ ngrok http -region jp 8080
+$ ngrok http --region jp 8080
 ```
 
 実行すると https://〇〇.jp.ngrok.io と表示されるのでコピーする

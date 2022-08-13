@@ -1,8 +1,9 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 import cv2
 import base64
 import numpy as np
 import ast
+from siritori import Siritori
 
 # おまじない
 app = Flask(__name__)
@@ -35,6 +36,8 @@ def res_EstimationResult():
 # http://localhost:5000/image にPOSTリクエストが来たら実行→レスポンスを返す
 @app.route("/image", methods=['POST'])
 def res_ImgProcessingResult():
+
+
     # デシリアライズ(ただの文字列になる)
     req = request.get_json()
 
@@ -64,6 +67,30 @@ def res_ImgProcessingResult():
     res = "デフォルト"
     return res
 
+@app.route("/siritori", methods=['POST'])
+def siritori_game():
+    siritori = Siritori("output.txt")
+    col = False
+    # デシリアライズ
+    req = request.get_json()
+
+    # <class 'dict'>であることを確認する
+    print(type(req))
+
+    # <class 'str'>の場合 以下で str -> dict へ変換する
+    # req = ast.literal_eval(req)
+
+    # {'key': 'value'}を表示
+    print(req)
+
+    # res = res[key]
+    res = req["message"]
+    next_noun, col = siritori.return_noun(res)
+
+    if col:
+        return Response(response=next_noun, status=201)
+    return next_noun
+
 # 実行 http://localhost:5000
 if __name__ == "__main__":
     # port番号5000番でデバッグモードON(ファイル変更時に自動でリロードしてくれる)
@@ -71,7 +98,6 @@ if __name__ == "__main__":
     # デフォルトはhttp://127.0.0.1 (自分のみアクセスできる)で
     # これを0.0.0.0(誰でもアクセス)にするときはapp.run(port=5000, debug=True, host='0.0.0.0')
     # 例えばEC2にAPIサーバを置く場合は試してみるといいかも
-
-# jsonifyを使うと辞書型をjson形式に変換でき、
-# response headerをapplication/jsonで返してくれる
-# でも例えば「これは〜です」resを返すだけなら使う必要はなさそう
+    # jsonifyを使うと辞書型をjson形式に変換でき、
+    # response headerをapplication/jsonで返してくれる
+    # でも例えば「これは〜です」resを返すだけなら使う必要はなさそう

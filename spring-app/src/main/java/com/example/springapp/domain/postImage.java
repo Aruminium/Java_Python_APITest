@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-
+import org.springframework.http.ResponseEntity;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,14 +32,16 @@ public class postImage implements IPost{
     }
 
     @Override
-    public String Post() throws JsonProcessingException {
+    public ResponseEntity<String> Post() throws JsonProcessingException {
         final RestTemplate restTemplate = new RestTemplate();
         final ObjectMapper mapper = new ObjectMapper();
         final String json = mapper.writeValueAsString(map);
         final HttpEntity<String> request = new HttpEntity<>(json, headers);
-        final String res = restTemplate.postForObject(
-                URL, request, String.class);
-        return res;
+        final ResponseEntity<String> response = restTemplate.exchange(URL, HttpMethod.POST, request, String.class);
+
+        // final String res = restTemplate.postForObject(
+        //         URL, request, String.class);
+        return response;
     }
 
 
