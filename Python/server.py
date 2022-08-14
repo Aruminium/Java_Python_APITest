@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, Response
+from flask import Flask, jsonify, request, Response, redirect, url_for
 import cv2
 import base64
 import numpy as np
@@ -8,6 +8,7 @@ from siritori import Siritori
 # おまじない
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
+siritori = Siritori("output.txt")
 
 # http://localhost:5000/message にPOSTリクエストが来たら実行→レスポンスを返す
 @app.route("/message", methods=['POST'])
@@ -69,7 +70,7 @@ def res_ImgProcessingResult():
 
 @app.route("/siritori", methods=['POST'])
 def siritori_game():
-    siritori = Siritori("output.txt")
+    global siritori
     col = False
     # デシリアライズ
     req = request.get_json()
@@ -85,9 +86,10 @@ def siritori_game():
 
     # res = res[key]
     res = req["message"]
-    next_noun, col = siritori.return_noun(res)
+    next_noun, col = siritori.return_nextnoun(res)
 
     if col:
+        siritori = Siritori("output.txt")
         return Response(response=next_noun, status=201)
     return next_noun
 
